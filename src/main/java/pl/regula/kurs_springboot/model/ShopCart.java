@@ -1,4 +1,4 @@
-package pl.regula.kurs_springboot;
+package pl.regula.kurs_springboot.model;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package pl.regula.kurs_springboot;
+package pl.regula.kurs_springboot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,12 +6,15 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+import pl.regula.kurs_springboot.model.Product;
+import pl.regula.kurs_springboot.model.ShopCart;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
-import static pl.regula.kurs_springboot.ShopUtil.addDiscountAfterVat;
-import static pl.regula.kurs_springboot.ShopUtil.initialiseShop;
+import static pl.regula.kurs_springboot.util.ShopUtil.addDiscountAfterVat;
+import static pl.regula.kurs_springboot.util.ShopUtil.initialiseShop;
 
 @Service
 @Profile("Pro")
@@ -41,7 +44,7 @@ public class ShopProService implements Shop {
         System.out.println("WARIANT " + profile);
         productList.forEach(System.out::println);
         List<Product> newProducts = productList.stream().map(p ->
-                new Product(p.getName(), addDiscountAfterVat(p.getPrice(), vat, discount))
+                new Product(p.getName(), addDiscountAfterVat(p.getPrice(), new BigDecimal(vat), new BigDecimal(discount)))
         ).collect(toList());
         System.out.println("=========================================");
         System.out.println("All product has "+vat + "% of tax");

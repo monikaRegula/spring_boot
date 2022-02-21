@@ -1,4 +1,4 @@
-package pl.regula.kurs_springboot;
+package pl.regula.kurs_springboot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,10 +6,12 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+import pl.regula.kurs_springboot.model.Product;
+import pl.regula.kurs_springboot.model.ShopCart;
 
 import java.util.List;
 
-import static pl.regula.kurs_springboot.ShopUtil.initialiseShop;
+import static pl.regula.kurs_springboot.util.ShopUtil.initialiseShop;
 
 
 @Service
